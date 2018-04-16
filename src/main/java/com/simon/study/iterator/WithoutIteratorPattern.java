@@ -1,4 +1,4 @@
-package com.simon.study.com.simon.study.iterator;
+package com.simon.study.iterator;
 
 
 import java.util.HashMap;
