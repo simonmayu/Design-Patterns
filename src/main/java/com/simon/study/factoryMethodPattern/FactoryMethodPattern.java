@@ -3,6 +3,12 @@ package com.simon.study.factoryMethodPattern;
 public class FactoryMethodPattern {
 
     public static void main(String[] args) {
+        Product product1 = Product1Factory.get().createProduct();
+        Product product2 = Product2Factory.get().createProduct();
+        Product product3 = Product3Factory.get().createProduct();
+        product1.execute();
+        product2.execute();
+        product3.execute();
 
     }
 
@@ -49,21 +55,61 @@ public class FactoryMethodPattern {
     }
 
 
-    public  static class Product1Factory extends AbstractProductFactory{
+    public static class Product1Factory extends AbstractProductFactory {
+
+        private static final Product1Factory instance = new Product1Factory();
+
+        private Product1Factory() {
+
+        }
+
+        public static Product1Factory get() {
+            return instance;
+        }
+
         @Override
         protected Product specificCreate() {
-            return null;
+            System.out.println("生产产品1的特殊逻辑");
+            return new Product1();
         }
     }
 
 
+    public static class Product2Factory extends AbstractProductFactory {
 
+        private static final Product2Factory instance = new Product2Factory();
 
+        private Product2Factory() {
 
+        }
 
+        public static Product2Factory get() {
+            return instance;
+        }
 
+        @Override
+        protected Product specificCreate() {
+            System.out.println("生产产品2的特殊逻辑");
+            return new Product2();
+        }
+    }
 
+    public static class Product3Factory extends AbstractProductFactory {
 
+        private static final Product3Factory instance = new Product3Factory();
 
+        private Product3Factory() {
 
+        }
+
+        public static Product3Factory get() {
+            return instance;
+        }
+
+        @Override
+        protected Product specificCreate() {
+            System.out.println("生产产品3的特殊逻辑");
+            return new Product3();
+        }
+    }
 }
